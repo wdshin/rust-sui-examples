@@ -7,3 +7,6 @@ edition = "2021"
 
 [dependencies]
 dioxus = { version = "0.2.4", features = ["desktop"] }
+
+#sui-sdk = { git = "https://github.com/MystenLabs/sui", branch = "devnet" }
+
