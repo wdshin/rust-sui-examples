@@ -2,7 +2,7 @@
 # dmud - 'Proof of Concepts'
 
 1. interact with sui move contracts
-2. minting objects
+2. minting some general objects
 3. listening events 
 4. very simple game objects
 5. very simple user object

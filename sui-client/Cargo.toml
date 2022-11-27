@@ -14,19 +14,19 @@ bench = false
 path = "src/main.rs"
 
 [[bin]]
-name = "sui-client-objects"
+name = "objects"
 test = false
 bench = false
 path = "src/get_owned_objects.rs"
 
 [[bin]]
-name = "sui-client-events"
+name = "events"
 test = false
 bench = false
 path = "src/event_subscription.rs"
 
 [[bin]]
-name = "sui-client-transfer-coins"
+name = "transfer-coins"
 test = false
 bench = false
 path = "src/transfer_coins.rs"
