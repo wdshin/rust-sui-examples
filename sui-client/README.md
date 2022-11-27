@@ -1,4 +1,4 @@
-# sui-client
+# a console sui-client
 
 * move 로 만든 contract 를 rust sui sdk로 테스트 하는 클라이언트
   
