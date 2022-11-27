@@ -8,10 +8,15 @@ module basics::object {
     use sui::tx_context::{Self, TxContext};
 
     /// A custom sui object. Every object must have the `key` attribute
+    /// 커스텀  sui 객체. 모든 객체는 `key` 속성을 가져야합니다.
     /// (indicating that it is allowed to be a key in the sui global object
+    /// ( sui 전역 객체 풀에서 허용되는 키임을 나타냅니다.)
     /// pool), and must have a field `id: UID` corresponding to its sui ObjId.
+    /// 그리고, sui ObjId에 해당하는 필드 `id: UID`가 있어야합니다.
     /// Other object attributes present at the protocol level (authenticator,
+    /// 다른 객체 속성은 프로토콜 레벨에서 존재합니다 (인증기,
     /// sequence number, TxDigest, ...) are intentionally not exposed here.
+    /// 시퀀스 번호, TxDigest, ...)는 여기에 고의적으로 노출되지 않습니다.
     struct Object has key {
         id: UID,
         /// Custom objects can have fields of arbitrary type...
@@ -23,14 +28,19 @@ module basics::object {
     }
 
     /// An object that can be stored inside global objects or other child
+    /// 객체가  전역 객체 또는 다른 자식 객체에 저장될 수 있지만 자체적으로 전역 객체 풀에 배치될 수 없는 객체입니다.
     /// objects, but cannot be placed in the global object pool on its own.
+    /// 하지만 전역 객체 풀에 배치될 수 없습니다.
     /// Note that it doesn't need an ID field
+    /// ID 필드가 필요하지 않음을 알 수 있습니다.
+    /// 즉, store 만 붙어 있으므로, global object pool 에 단독으로 존재할 수 없고, ID field 가 없다.
     struct ChildObject has store {
         a_field: bool,
     }
 
     /// An object that can live either in the global object pool or as a nested
     /// object.
+    /// global object pool 에 존재할 수도 있고, nested object 로 존재할 수도 있다.
     struct AnotherObject has key, store {
         id: UID,
     }

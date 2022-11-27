@@ -71,5 +71,6 @@
 * https://tokio.rs/
 * https://docs.sui.io/learn
 * https://examples.sui.io/index.html
-  
-  
+* https://rust-lang-nursery.github.io/rust-cookbook/intro.html
+
+
