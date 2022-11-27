@@ -4,39 +4,65 @@
 ## objectives 
 
 * study move contract
-* rust gui libraries
-* sui rust sdk 
-* dmud 의 poc
+* study rust gui libraries
+* study sui rust sdk 
+* dmud poc
 
-## dmud 
+## dmud poc
 
 * [README](dmud_poc/README.md)
 
 ## sui-client
 
+* https://github.com/MystenLabs/sui
 * [README](sui-client/README.md)
-## dioxus-sui-client
+## gui
 
+### dioxus-sui-client
+
+* https://github.com/DioxusLabs/dioxus
 * [README](dioxus-sui-client/README.md)
 
-### mint-nft
+### bevy-client
 
-
-* objective : GUI 를 사용한 실행을 통해, sui blockchain에 connect 하고 contract 를 실행하고, 결과를 확인한다.
-* https://dioxuslabs.com/ 를 이용한 클라이언트
-* https://docs.sui.io/build/move sui move 를 이용한 smart contract 와 클라이언트
-  * nft mint 하는 smart contract
-
-## bevy-client
-
+* https://github.com/bevyengine/bevy
 * [README](bevy-client/README.md)
 
-## egui-sui-client
+### egui-sui-client
 
+* https://github.com/emilk/egui
+* [README](egui-sui-client/README.md)
 
-* [README](egui-client/README.md)
+## actix
+
+* https://github.com/actix
+* https://github.com/actix/examples
+
+## ecs ( entity component system )
+
+### shipyard
+
+* https://github.com/leudz/shipyard
+
+### legion
+
+* https://github.com/amethyst/legion
+
+## database
+### mongodb
+
+* https://github.com/mongodb/mongo-rust-driver
+
+### scylladb
+
+* https://github.com/scylladb/scylla-rust-driver
+
+## etc
+### hot code reloader
+
+* https://github.com/rksm/hot-lib-reloader-rs
+
 
 ## ref
 
 * [README](ref/README.md)
-
