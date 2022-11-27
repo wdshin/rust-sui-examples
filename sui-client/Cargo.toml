@@ -7,15 +7,35 @@ description = "sui move contract caller"
 readme = "README.md"
 keywords = ["gamedev", "sui"]
 
-# [[bin]]
-# name = "sui-client"
-# test = false
-# bench = false
+[[bin]]
+name = "sui-client"
+test = false
+bench = false
+path = "src/main.rs"
+
+[[bin]]
+name = "sui-client-objects"
+test = false
+bench = false
+path = "src/get_owned_objects.rs"
+
+[[bin]]
+name = "sui-client-events"
+test = false
+bench = false
+path = "src/event_subscription.rs"
+
+[[bin]]
+name = "sui-client-transfer-coins"
+test = false
+bench = false
+path = "src/transfer_coins.rs"
 
 # [[bin]]
-# name = "sui-client-ws"
+# name = "sui-client-mint"
 # test = false
 # bench = false
+# path = "src/mint_nft.rs"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 [profile.dev]
@@ -25,29 +45,21 @@ lto="off"
 lto="off"
 
 [dependencies]
+futures-core = "0.3.21"
+futures = "0.3.23"
 tokio = { features = ["full"] }
 anyhow = "1.0.66"
+dirs = "4.0.0"
+
 sui-sdk = { git = "https://github.com/MystenLabs/sui", branch = "devnet" }
-#bitflags = { path = "my-bitflags", version = "1.0" }
-#sui-sdk = { path = "/Users/cpp.wdshin/sui/" }
+sui-framework =  { git = "https://github.com/MystenLabs/sui", branch = "devnet"}
+sui-json-rpc = { git = "https://github.com/MystenLabs/sui", branch = "devnet"}
+sui-transaction-builder = { git = "https://github.com/MystenLabs/sui", branch = "devnet"}
+sui-json-rpc-types= { git = "https://github.com/MystenLabs/sui", branch = "devnet"}
+sui-types =  { git = "https://github.com/MystenLabs/sui", branch = "devnet"}
+sui-json = { git = "https://github.com/MystenLabs/sui", branch = "devnet"}
+sui-core = { git = "https://github.com/MystenLabs/sui", branch = "devnet"}
+sui-config = { git = "https://github.com/MystenLabs/sui", branch = "devnet"}
+sui-keys =  { git = "https://github.com/MystenLabs/sui", branch = "devnet"}
 
-# anyhow = "1.0.64"
-# async-trait = "0.1.57"
-# jsonrpsee = { version = "0.15.1", features = ["full"] }
-# serde = { version = "1.0.144", features = ["derive"] }
-# serde_json = "1.0.83"
-# futures-core = "0.3.21"
-# futures = "0.3.23"
-# tokio = "1.20.1"
-# rand = "0.8.5"
-# bcs = "0.1.4"
-
-# sui-json-rpc = { path = "/Users/cpp.wdshin/sui/crates/sui-json-rpc" }
-# sui-transaction-builder = { path = "/Users/cpp.wdshin/sui/crates/sui-transaction-builder" }
-# sui-json-rpc-types= { path = "/Users/cpp.wdshin/sui/crates/sui-json-rpc-types" }
-# sui-types = { path = "/Users/cpp.wdshin/sui/crates/sui-types" }
-# sui-json = { path = "/Users/cpp.wdshin/sui/crates/sui-json" }
-# sui-core = { path = "/Users/cpp.wdshin/sui/crates/sui-core" }
-# sui-config = { path = "/Users/cpp.wdshin/sui/crates/sui-config" }
-# sui-keys =  { path = "/Users/cpp.wdshin/sui/crates/sui-keys" }
-
+[dev-dependencies]
