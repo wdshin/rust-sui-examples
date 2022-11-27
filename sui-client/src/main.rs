@@ -15,6 +15,27 @@ async fn main() -> Result<(), anyhow::Error> {
     let objects = sui.read_api().get_objects_owned_by_address(address).await?;
     println!("{:?}", objects);
     
+    // TODO - call sui transaction
+    // TODO - what is the gas object id?
+     // Create a move call transaction using the TransactionBuilder API.
+    //  let create_game_call = self
+    //  .client
+    //  .transaction_builder()
+    //  .move_call(
+    //      player_x,
+    //      self.game_package_id,
+    //      "shared_tic_tac_toe",
+    //      "create_game",
+    //      vec![],
+    //      vec![
+    //          SuiJsonValue::from_str(&player_x.to_string())?,
+    //          SuiJsonValue::from_str(&player_o.to_string())?,
+    //      ],
+    //      None, // The gateway server will pick a gas object belong to the signer if not provided.
+    //      1000,
+    //  )
+    //  .await?;
+
     //let sui = SuiClient::new("https://fullnode.devnet.sui.io:443", Some("ws://127.0.0.1:9001"), None).await?;
     // let mut subscribe_all = sui.event_api().subscribe_event(SuiEventFilter::All(vec![])).await?;
     // loop {
