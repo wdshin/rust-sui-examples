@@ -13,18 +13,26 @@
 
 * mac osx
 
-    * sui client full node
-    ```bash
-    cargo run --release --bin sui-node -- --config-path fullnode.yaml
-    ```
-
     * warning : 최신 llvm 에서 빌드 안 된다.  
     ```bash
     export CC="/usr/bin/gcc"
     export CXX="/usr/bin/g++"
     ```
+
+    * sui client full node
+      * sui 를 local 에 설치해 놓아야 한다.
+      * websocket event 를 받기 위해서 필요하다.
+    ```bash
+    cargo run --release --bin sui-node -- --config-path fullnode.yaml
+    ```
+  
     * cargo build
     * cargo run
+      * cargo run --bin main
+      * cargo run --bin objects
+      * cargo run --bin events
+      * cargo run --bin transfer-coins
+      * 
 
 
 

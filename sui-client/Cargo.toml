@@ -8,7 +8,7 @@ readme = "README.md"
 keywords = ["gamedev", "sui"]
 
 [[bin]]
-name = "sui-client"
+name = "main"
 test = false
 bench = false
 path = "src/main.rs"
