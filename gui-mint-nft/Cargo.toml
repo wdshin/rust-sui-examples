@@ -1,5 +1,5 @@
 [package]
-name = "mint-nft"
+name = "gui-mint-nft"
 version = "0.1.0"
 edition = "2021"
 
@@ -8,5 +8,8 @@ edition = "2021"
 [dependencies]
 dioxus = { version = "0.2.4", features = ["desktop"] }
 
-#sui-sdk = { git = "https://github.com/MystenLabs/sui", branch = "devnet" }
+tokio = { features = ["full"] }
+anyhow = "1.0.66"
+workspace-hack = "0.1.0"
 
+sui-sdk = { git = "https://github.com/MystenLabs/sui", branch = "devnet" }

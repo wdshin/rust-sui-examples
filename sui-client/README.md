@@ -1,3 +1,13 @@
+# sui-client
+
+* move 로 만든 contract 를 rust sui sdk로 테스트 하는 클라이언트
+  
+* check balance 
+* mint nft
+* check objects
+* create character in dmud
+* battle 
+
 
 ## build & run
 
