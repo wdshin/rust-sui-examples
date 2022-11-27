@@ -1,4 +1,3 @@
-
 use futures::StreamExt;
 use sui_sdk::rpc_types::SuiEventFilter;
 use sui_sdk::SuiClient;
@@ -14,4 +13,3 @@ async fn main() -> Result<(), anyhow::Error> {
         println!("{:?}", subscribe_all.next().await);
     }
 }
-Footer
