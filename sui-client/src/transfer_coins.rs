@@ -19,9 +19,15 @@ async fn main() -> Result<(), anyhow::Error> {
         None => panic!("Cannot obtain home directory path"),
     };
 
-    let my_address = SuiAddress::from_str("0x47722589dc23d63e82862f7814070002ffaaa465")?;
-    let gas_object_id = ObjectID::from_str("0x273b2a83f1af1fda3ddbc02ad31367fcb146a814")?;
-    let recipient = SuiAddress::from_str("0xbd42a850e81ebb8f80283266951d4f4f5722e301")?;
+    // sui address 는 sui client active-address 로 확인 가능
+    let my_address = SuiAddress::from_str("0xfe78ab1acc4b10abe464aeb7eaafed6125a79c42")?;
+    // gas_object 는 sui client objects 로 확인 가능
+    // 0x6549a1a12b8855d57909e5907610afe2d2abb277 |     10     | 
+    // B3phyNQtM8E5PlN12owvtXv1kGQFnz3UOpucNKuNSm8= |  AddressOwner   |      0x2::coin::Coin<0x2::sui::SUI>
+    // 0xa34de8bf29fd83e83e40edcf1476fb07aed2e943 |
+
+    let gas_object_id = ObjectID::from_str("0x6549a1a12b8855d57909e5907610afe2d2abb277")?;
+    let recipient = SuiAddress::from_str("0xb6c3c65abd9b236041c0a65db20ff8b5607a313b")?;
 
     // Create a sui transfer transaction
     let transfer_tx = sui

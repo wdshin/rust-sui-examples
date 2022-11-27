@@ -6,18 +6,17 @@ use sui_sdk::SuiClient;
 
 #[tokio::main]
 async fn main() -> Result<(), anyhow::Error> {
+    // todo url 을 argument 로 가져오기
     //let sui = SuiClient::new("https://fullnode.devnet.sui.io:443", None, None).await?;
     let sui = SuiClient::new("https://fullnode.devnet.sui.io:443", Some("ws://127.0.0.1:9001"), None).await?;
     //let address = SuiAddress::from_str("0xec11cad080d0496a53bafcea629fcbcfff2a9866")?;
     println!("sui.api_version : {:?}", sui.api_version());
     let address = SuiAddress::from_str("0xfe78ab1acc4b10abe464aeb7eaafed6125a79c42")?;
     
-
     let objects = sui.read_api().get_objects_owned_by_address(address).await?;
     println!("objects owned : {:?}", objects);
     
     // TODO - call sui transaction
-    // TODO - what is the gas object id?
      // Create a move call transaction using the TransactionBuilder API.
     //  let create_game_call = self
     //  .client

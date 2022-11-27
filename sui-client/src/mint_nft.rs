@@ -9,6 +9,8 @@ use sui_sdk::{
     SuiClient,
 };
 
+// https://github.com/MystenLabs/sui/blob/main/crates/sui-sdk/examples/tic_tac_toe.rs
+
 #[tokio::main]
 async fn main() -> Result<(), anyhow::Error> {
     let sui = SuiClient::new("https://fullnode.devnet.sui.io:443", None, None).await?;
