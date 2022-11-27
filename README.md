@@ -63,6 +63,10 @@
 * https://github.com/rksm/hot-lib-reloader-rs
 
 
-## ref
+## ref to learn
 
 * [README](ref/README.md)
+
+* https://doc.rust-lang.org/cargo/index.html
+* https://tokio.rs/
+* https://docs.sui.io/learn
