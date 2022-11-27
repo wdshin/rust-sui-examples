@@ -1,7 +1,21 @@
 [package]
 name = "sui-client"
 version = "0.1.0"
+authors = ["Wondong Shin <wodshin@gmail.com>"]
 edition = "2021"
+description = "sui move contract caller"
+readme = "README.md"
+keywords = ["gamedev", "sui"]
+
+# [[bin]]
+# name = "sui-client"
+# test = false
+# bench = false
+
+# [[bin]]
+# name = "sui-client-ws"
+# test = false
+# bench = false
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 [profile.dev]
@@ -12,7 +26,7 @@ lto="off"
 
 [dependencies]
 tokio = { features = ["full"] }
-anyhow = "1.0.40"
+anyhow = "1.0.66"
 sui-sdk = { git = "https://github.com/MystenLabs/sui", branch = "devnet" }
 #bitflags = { path = "my-bitflags", version = "1.0" }
 #sui-sdk = { path = "/Users/cpp.wdshin/sui/" }

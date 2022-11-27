@@ -13,6 +13,11 @@
 
 * mac osx
 
+    * sui client full node
+    ```bash
+    cargo run --release --bin sui-node -- --config-path fullnode.yaml
+    ```
+
     * warning : 최신 llvm 에서 빌드 안 된다.  
     ```bash
     export CC="/usr/bin/gcc"
