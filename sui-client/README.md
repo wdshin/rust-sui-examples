@@ -32,7 +32,7 @@
       * cargo run --bin objects
       * cargo run --bin events
       * cargo run --bin transfer-coins
-      * 
+      * cargo run --bin mint
 
 
 

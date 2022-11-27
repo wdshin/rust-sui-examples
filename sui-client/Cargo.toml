@@ -31,11 +31,11 @@ test = false
 bench = false
 path = "src/transfer_coins.rs"
 
-# [[bin]]
-# name = "sui-client-mint"
-# test = false
-# bench = false
-# path = "src/mint_nft.rs"
+[[bin]]
+name = "mint"
+test = false
+bench = false
+path = "src/mint_nft.rs"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 [profile.dev]
@@ -61,5 +61,11 @@ sui-json = { git = "https://github.com/MystenLabs/sui", branch = "devnet"}
 sui-core = { git = "https://github.com/MystenLabs/sui", branch = "devnet"}
 sui-config = { git = "https://github.com/MystenLabs/sui", branch = "devnet"}
 sui-keys =  { git = "https://github.com/MystenLabs/sui", branch = "devnet"}
+fastcrypto = "0.1.3"
+#fastcrypto.workspace = true
 
 [dev-dependencies]
+clap = { version = "4.0.27", features = ["derive"] }
+dirs = "4.0.0"
+async-recursion = "1.0.0"
+tempfile = "3.3.0"
