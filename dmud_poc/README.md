@@ -11,6 +11,59 @@
 8. very simple social world
 9. entity component system in sui move
 
+## prepare an address using sui client
+
+* https://docs.sui.io/build/cli-client
+
+
+* make a new address
+```bash
+sui client new-address ed25519
+```
+
+* addresses you can use
+```bash
+sui client addresses
+```
+
+* active address
+```bash
+sui client active-address
+```
+
+* change active address
+
+```bash
+sui client switch --address 0x913cf36f370613ed131868ac6f9da2420166062e
+```
+
+* check what the address owner has
+  
+```bash
+sui client objects
+```
+
+* check how much gas the address owner has
+```bash
+sui client gas
+```
+
+* check what the object id has
+
+```bash
+sui client object --id 0x8cc9ca32dd5229271a2fa1baa9bad382e488a99c 
+sui client object --id 0x8cc9ca32dd5229271a2fa1baa9bad382e488a99c --json
+```
+
+* transfer object
+
+```
+sui client transfer --to 0xf456ebef195e4a231488df56b762ac90695be2dd --object-id 0x66eaa38c8ea99673a92a076a00101ab9b3a06b55 --gas-budget 100
+```
+
+* split coin , merge coin
+  
+
 ## build
 
 ```bash
