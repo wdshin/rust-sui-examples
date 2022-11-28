@@ -1,4 +1,7 @@
 use std::str::FromStr;
+use sui_json_rpc_types::SuiTypeTag;
+use sui_json::SuiJsonValue;
+use serde_json::json;
 use sui_keys::keystore::{AccountKeystore, FileBasedKeystore, Keystore};
 use sui_sdk::{
     types::{
@@ -8,6 +11,7 @@ use sui_sdk::{
     },
     SuiClient,
 };
+use sui_types::messages::ExecuteTransactionRequestType;
 
 // https://github.com/MystenLabs/sui/blob/main/crates/sui-sdk/examples/tic_tac_toe.rs
 
@@ -20,22 +24,52 @@ async fn main() -> Result<(), anyhow::Error> {
         None => panic!("Cannot obtain home directory path"),
     };
 
-    let address = SuiAddress::from_str("0xfe78ab1acc4b10abe464aeb7eaafed6125a79c42")?;
+    let my_address = SuiAddress::from_str("0xfe78ab1acc4b10abe464aeb7eaafed6125a79c42")?;
     
+    // immutable 객체 리스트를 어떻게 가져오지?
+    //let objects = sui.read_api().get_objects_owned_by_address(address).await?;
+
+    let args = vec![
+        SuiJsonValue::new(json!("1"))?,
+        SuiJsonValue::new(json!("1"))?,
+        SuiJsonValue::new(json!("1"))?
+    ];
+    let type_args = vec![];//SuiTypeTag::U8, SuiTypeTag::U8, SuiTypeTag::U8];
+    // let type_args = vec![
+    //     SuiTypeTag::from(TypeTag::Vector(TypeTag::U8)),
+    //     SuiTypeTag::from(TypeTag::Vector(TypeTag::U8)),
+    //     SuiTypeTag::from(TypeTag::Vector(TypeTag::U8)),
+    //     ];
     // Create a move call transaction using the TransactionBuilder API.
     let create_call = sui
         .transaction_builder()
         .move_call(
-            address,
-            ObjectID::from_str("0xab17cf439261ca249d27f54abc7728e949278100")?,//self.game_package_id,
-            "dmud_poc",
+            my_address,
+            ObjectID::from_str("0x4d3e94bb8421b4d27c2e1138fc6948dc913bfc36")?,//self.game_package_id,
             "devnet_nft",
-            vec![], //Vec<SuiTypeTag>
-            vec![], //Vec<SuiJsonValue>,
+            "mint_to_sender",
+            type_args,
+            args, //["1","2","3"],//args,
             None, // The gateway server will pick a gas object belong to the signer if not provided.
             1000,
         )
         .await?;
+    println!("create_call : {:?}", create_call);
+
+    // Sign transaction
+    let keystore = Keystore::from(FileBasedKeystore::new(&keystore_path)?);
+    let signature = keystore.sign(&my_address, &create_call.to_bytes())?;
+
+    // Execute the transaction
+    let transaction_response = sui
+        .quorum_driver()
+        .execute_transaction(
+            Transaction::from_data(create_call, signature).verify()?,
+            Some(ExecuteTransactionRequestType::WaitForLocalExecution),
+        )
+        .await?;
+
+    println!("transaction_response : {:?}", transaction_response);
 
     Ok(())
 }
