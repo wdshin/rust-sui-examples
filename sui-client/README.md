@@ -35,4 +35,45 @@
       * cargo run --bin mint
 
 
+### move_call
 
+```rust
+    #[method(name = "moveCall")]
+    async fn move_call(
+        &self,
+        /// the transaction signer's Sui address
+        signer: SuiAddress,
+        /// the Move package ID, e.g. `0x2`
+        package_object_id: ObjectID,
+        /// the Move module name, e.g. `devnet_nft`
+        module: String,
+        /// the move function name, e.g. `mint`
+        function: String,
+        /// the type arguments of the Move function
+        type_arguments: Vec<SuiTypeTag>,
+        /// the arguments to be passed into the Move function, in [SuiJson](https://docs.sui.io/build/sui-json) format
+        arguments: Vec<SuiJsonValue>,
+        /// gas object to be used in this transaction, the gateway will pick one from the signer's possession if not provided
+        gas: Option<ObjectID>,
+        /// the gas budget, the transaction will fail if the gas cost exceed the budget
+        gas_budget: u64,
+    ) -> RpcResult<TransactionBytes>;
+```    
+
+### publish
+
+```rust
+    /// Create an unsigned transaction to publish Move module.
+    #[method(name = "publish")]
+    async fn publish(
+        &self,
+        /// the transaction signer's Sui address
+        sender: SuiAddress,
+        /// the compiled bytes of a move module, the
+        compiled_modules: Vec<Base64>,
+        /// gas object to be used in this transaction, the gateway will pick one from the signer's possession if not provided
+        gas: Option<ObjectID>,
+        /// the gas budget, the transaction will fail if the gas cost exceed the budget
+        gas_budget: u64,
+    ) -> RpcResult<TransactionBytes>;
+```

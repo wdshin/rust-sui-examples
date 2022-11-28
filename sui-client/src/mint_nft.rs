@@ -15,6 +15,13 @@ use sui_types::messages::ExecuteTransactionRequestType;
 
 // https://github.com/MystenLabs/sui/blob/main/crates/sui-sdk/examples/tic_tac_toe.rs
 
+// fn unwrap_or<'a>(val: &'a Option<String>, default: &'a str) -> &'a str {
+//     match val {
+//         Some(v) => v,
+//         None => default,
+//     }
+// }
+
 #[tokio::main]
 async fn main() -> Result<(), anyhow::Error> {
     let sui = SuiClient::new("https://fullnode.devnet.sui.io:443", None, None).await?;
@@ -29,17 +36,24 @@ async fn main() -> Result<(), anyhow::Error> {
     // immutable 객체 리스트를 어떻게 가져오지?
     //let objects = sui.read_api().get_objects_owned_by_address(address).await?;
 
-    let args = vec![
-        SuiJsonValue::new(json!("1"))?,
-        SuiJsonValue::new(json!("1"))?,
-        SuiJsonValue::new(json!("1"))?
-    ];
-    let type_args = vec![];//SuiTypeTag::U8, SuiTypeTag::U8, SuiTypeTag::U8];
-    // let type_args = vec![
-    //     SuiTypeTag::from(TypeTag::Vector(TypeTag::U8)),
-    //     SuiTypeTag::from(TypeTag::Vector(TypeTag::U8)),
-    //     SuiTypeTag::from(TypeTag::Vector(TypeTag::U8)),
-    //     ];
+    // let args = vec![
+    //     SuiJsonValue::new(json!("1"))?,
+    //     SuiJsonValue::new(json!("1"))?,
+    //     SuiJsonValue::new(json!("1"))?
+    // ];
+    // let args_json = json!([
+    //     unwrap_or(&name, "이름"),
+    //     unwrap_or(&description, "설명"),
+    //     unwrap_or(&url, "https://www.sui.io"),
+    // ]);
+    let args_json = json!(["이름","설명","https://www.sui.io"]);
+    let mut args = vec![];
+    for a in args_json.as_array().unwrap() {
+        args.push(SuiJsonValue::new(a.clone()).unwrap());
+    }
+
+    let type_args = vec![];
+
     // Create a move call transaction using the TransactionBuilder API.
     let create_call = sui
         .transaction_builder()
@@ -49,7 +63,7 @@ async fn main() -> Result<(), anyhow::Error> {
             "devnet_nft",
             "mint_to_sender",
             type_args,
-            args, //["1","2","3"],//args,
+            args, 
             None, // The gateway server will pick a gas object belong to the signer if not provided.
             1000,
         )
