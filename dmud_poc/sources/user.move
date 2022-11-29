@@ -1,3 +1,4 @@
-module dmud_poc::users {
+module dmud_poc::user {
+
 
 }
