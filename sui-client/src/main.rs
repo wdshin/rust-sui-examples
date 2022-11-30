@@ -9,6 +9,8 @@ use std::io::Write;
 //use requestty::Question;
 
 use sui_client::dmud;
+use sui_client::configuration;
+//use sui_client::configuration::{get_configuration,new};
 
 // #[tokio::main]
 // async fn main() -> Result<(), anyhow::Error> {
@@ -42,7 +44,11 @@ fn prompt(name:&str) -> String {
 #[tokio::main]
 async fn main() -> Result<(), anyhow::Error> {
     // TODO read address from config file
-    let sui = SuiClient::new("https://fullnode.devnet.sui.io:443", None, None).await?;
+    let configuration = configuration::get("config.yaml").expect("Failed to read configuration.");
+    //let configuration = configuration::new();
+    println!("configuration : {:?}", configuration);
+    //let sui = SuiClient::new("https://fullnode.devnet.sui.io:443", None, None).await?;
+    let sui = SuiClient::new(&configuration.http_url, None, None).await?;
 
     // TODO read from home or specified path
     let keystore_path = match dirs::home_dir() {
