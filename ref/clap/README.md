@@ -1,6 +1,5 @@
 
-# [clap](https://github.com/clap-rs/clap)
+# [clap](https://github.com/wdshin/clap)
 
-* [examples](https://github.com/clap-rs/clap/tree/master/examples)
-
+* [examples](https://github.com/wdshin/clap/tree/master/examples)
 
