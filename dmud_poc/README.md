@@ -221,13 +221,13 @@ sui client object --id $OBJECT --json
   * ! is directly connected to a wallet.
   * ! should be created(minted) right after connecting to a Universe.
   * ! has informations about the outside.
-    * primary PFP
-      * other NFTs
-    * membership NFTs
-    * real name
-    * email
-    * blockchain wallet address
-    * device ids
+    * has primary PFP
+      * has other NFTs
+    * has membership NFTs
+    * has real name
+    * has email
+    * has blockchain wallet address
+    * has device ids
   * ! can connect to a World.
   * ! can create a Player after connecting to a World.
   * ! has(owns) several Players(NFTs)
@@ -236,6 +236,7 @@ sui client object --id $OBJECT --json
   * ? can connect to Chatting Rooms(Channels)
 * Player
   * is an mortal.
+  * is connected to a User.
   * ! has Items(NFTs) of the World.
   * ! has Coins of the World.
   * ! has a PlayerState of the World.
