@@ -312,7 +312,9 @@ sui client object --id $OBJECT --json
 
 * events for player
 
+## study on move
 
+* https://move-book.com/
 ## study on sui-framework's builtin data structures
 
 * [object](https://github.com/MystenLabs/sui/blob/main/crates/sui-framework/docs/object.md)
