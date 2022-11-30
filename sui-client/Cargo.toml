@@ -37,6 +37,12 @@ test = false
 bench = false
 path = "src/mint_nft.rs"
 
+[[bin]]
+name = "new_world"
+test = false
+bench = false
+path = "src/new_world.rs"
+
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 [profile.dev]
 lto="off"

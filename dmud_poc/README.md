@@ -254,13 +254,20 @@ sui client object --id $OBJECT --json
   * ? has an Entry(Starting) Zone.
   * ! has a Game Mode.
   * ! has a Game State.
+  * has at least one zone, one level , one game mode and one game state.
 
-* ? Level
+* ? Level 
+  * has a parent Zone.
   * should be edited online by immortals.
   * ? should be imported from Level Editor
     * ! from dMUD Level Editor
     * from Unreal Engine , Unity Engine , 
 
+  * Static Actors 
+  * Dynamic Actor Spawner
+  * Ticker
+  * loads by loading static actors, dynamic actors 
+  * starts by Ticker.
 
 
 ### input entities ( contracts )
@@ -271,7 +278,7 @@ sui client object --id $OBJECT --json
     * 이것을 context 에  맞게 해석하여 commander entity 로 보내고, commander entity 가 player 를 control 하도록 한다.
   * packet commander
   
-  
+
 * player controller
   * commander 에게 명령을 받는 entity
   * player 에게 명령을 내리는 entity
@@ -305,7 +312,7 @@ sui client object --id $OBJECT --json
 * events for player
 
 
-## study on sui-framework's builtin facilities
+## study on sui-framework's builtin data structures
 
 * [object](https://github.com/MystenLabs/sui/blob/main/crates/sui-framework/docs/object.md)
   * ID
@@ -314,5 +321,21 @@ sui client object --id $OBJECT --json
   * commander 를 통해 받은 명령어들을 쌓아놓는데 쓰면 될 것 같다.
   * 얼마나 많이 저장할 수 있는지 궁금하다.
 
+* [bag](https://github.com/MystenLabs/sui/blob/main/crates/sui-framework/docs/bag.md)
+* [table](https://github.com/MystenLabs/sui/blob/main/crates/sui-framework/docs/table.md)
+
+
 * [object_bag](https://github.com/MystenLabs/sui/blob/main/crates/sui-framework/docs/object_bag.md)
 * [object_table](https://github.com/MystenLabs/sui/blob/main/crates/sui-framework/docs/object_table.md)
+
+* [vec_map](https://github.com/MystenLabs/sui/blob/main/crates/sui-framework/docs/vec_map.md)
+  * function interface 만 map 이고 모두 O(N)으로 작동함.
+  * insertion order 대로 iteration 됨.
+* [vec_set](https://github.com/MystenLabs/sui/blob/main/crates/sui-framework/docs/vec_set.md)
+  * function interface 만 map 이고 모두 O(N)으로 작동함.
+  * duplicate key 불허하는지에 대해서 보장 안 함 ㅋㅋ 
+
+
+* [dynamic_field](https://github.com/MystenLabs/sui/blob/main/crates/sui-framework/docs/dynamic_field.md)
+* [dynamic_object_field](https://github.com/MystenLabs/sui/blob/main/crates/sui-framework/docs/dynamic_object_field.md)
+  
