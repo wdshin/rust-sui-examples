@@ -116,3 +116,8 @@ name: 이름
 url: https://www.sui.io
 
 ```
+
+### study rust crates
+
+* [CLI](https://rust-cli.github.io/book/index.html)
+
