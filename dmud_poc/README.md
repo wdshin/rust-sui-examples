@@ -298,16 +298,16 @@ sui client object --id $OBJECT --json
 
 * commander on chain
   * text commander on chain
-    * client 가 text commander 에게 검증되지 않은 명령어를 보낸다.
-    * 이것을 context 에  맞게 해석하여 commander entity 로 보내고, commander entity 가 player 를 control 하도록 한다.
+    * The client sends an unverified command to the text commander.
+    * This is interpreted according to the context and sent to the commander entity, and the commander entity controls the player.
   * packet commander
   
 
 * player controller
-  * commander 에게 명령을 받는 entity
-  * player 에게 명령을 내리는 entity
-  * player 는 어떤 공간에 속해 있을 수 있다.
-    * 어떤 공간에 속해 있지 않다면 void 에 속해 있다.
+  * entity that receives orders from the commander
+  * An entity that issues commands to the player
+  * A player can belong to any space.
+    * If it does not belong to a space, it belongs to void.
 
 ### game entities
 
@@ -344,8 +344,8 @@ sui client object --id $OBJECT --json
   * ID
   * UID
 * [priority_queue](https://github.com/MystenLabs/sui/blob/main/crates/sui-framework/docs/priority_queue.md)
-  * commander 를 통해 받은 명령어들을 쌓아놓는데 쓰면 될 것 같다.
-  * 얼마나 많이 저장할 수 있는지 궁금하다.
+  * It seems to be used to accumulate commands received through comander.
+  * I wonder how much you can store.
 
 * [bag](https://github.com/MystenLabs/sui/blob/main/crates/sui-framework/docs/bag.md)
 * [table](https://github.com/MystenLabs/sui/blob/main/crates/sui-framework/docs/table.md)
@@ -355,11 +355,11 @@ sui client object --id $OBJECT --json
 * [object_table](https://github.com/MystenLabs/sui/blob/main/crates/sui-framework/docs/object_table.md)
 
 * [vec_map](https://github.com/MystenLabs/sui/blob/main/crates/sui-framework/docs/vec_map.md)
-  * function interface 만 map 이고 모두 O(N)으로 작동함.
-  * insertion order 대로 iteration 됨.
+  * Only the function interface is map , and all of them work in O(N).
+  * Iterates according to the insertion order.
 * [vec_set](https://github.com/MystenLabs/sui/blob/main/crates/sui-framework/docs/vec_set.md)
-  * function interface 만 map 이고 모두 O(N)으로 작동함.
-  * duplicate key 불허하는지에 대해서 보장 안 함 ㅋㅋ 
+  * Only the function interface is map , and all of them work in O(N).
+  * We do not guarantee that duplicate keys are not allowed.
 
 
 * [dynamic_field](https://github.com/MystenLabs/sui/blob/main/crates/sui-framework/docs/dynamic_field.md)

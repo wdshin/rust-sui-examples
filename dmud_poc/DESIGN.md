@@ -24,23 +24,23 @@
 * TODO Social World
 * TODO Object Browser, World Browser, Module Browser
 * TODO Object Injector, Object Editor, Object Creator
-* TODO 이 월드에 속한 모든 유저를 이터레이션 하고 싶다면?
-* TODO 이 월드에 속한 모든 온라인 유저를 이터레이션 하고 싶다면?
-* TODO 이 월드에 속한 모든 플레이어를 이터레이션 하고 싶다면?
-* TODO 이 월드에 속한 모든 온라인 플레이어를 이터레이션 하고 싶다면?
+* TODO What if you want to iterate over all users in this world?
+* TODO What if you want to iterate over all online users in this world?
+* TODO What if you want to iterate over all players in this world?
+* TODO What if you want to iterate over all online players in this world?
 
 
 ## 2022-12-1
 
 * user
 * player
-* monster 는 어떻게 구조화 할까?
-  * snoop target monster 가능해야 함
-    * 관전
-  * immortal 이 monster 로 들어갈 수 있어야 함.
-    * AI controller 대신에 조종가능해야 함.
-  * AI controller 가 붙어야 함.
-    * 데이터만으로 만들 수 있는게 좋다.
-  * monster 도 player 인가?
+* How to structure monster ?
+  * snoop target monster must be possible
+    * watching
+  * The immortal must be able to enter the monster.
+    * Instead of an AI controller, it should be maneuverable.
+  * AI controller must be attached.
+    * It's good to be able to make it with only data.
+  * Are monsters also players?
     * No!
-    * Character 이다.
+    * they are Characters.
