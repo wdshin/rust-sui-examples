@@ -15,6 +15,8 @@ module dmud_poc::world {
     use sui::transfer;
     use sui::tx_context::{Self, TxContext};
 
+    use dmud_poc::zone;
+
     // Part 2: types
     struct World has key, store {
         id: UID,
@@ -30,11 +32,7 @@ module dmud_poc::world {
         /// Name of the God of the world
         name_of_god: string::String,
         /// Zones in the world
-        zones: VecMap<ID,Zone>,
-    }
-
-    struct Zone has key, store  {
-        id: UID,
+        zones: VecMap<ID,zone::Zone>,
     }
 
     // Part3 : functions
@@ -53,20 +51,6 @@ module dmud_poc::world {
     // ===== Private Functions =====
 
     // --- Initialization
-    
-    // fun init(ctx: &mut TxContext) {
-    //     let admin = admin();
-    //     // ensure this is being initialized by the expected admin authenticator
-    //     assert!(&tx_context::sender(ctx) == &admin, ENOT_ADMIN);
-    //     transfer::transfer(
-    //         GameAdmin {
-    //             id: object::new(ctx),
-    //             boars_created: 0,
-    //             potions_created: 0
-    //         },
-    //         admin
-    //     )
-    // }
 
     // ===== Public Functions =====
 
