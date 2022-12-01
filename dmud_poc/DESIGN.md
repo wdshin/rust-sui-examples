@@ -24,6 +24,10 @@
 * TODO Social World
 * TODO Object Browser, World Browser, Module Browser
 * TODO Object Injector, Object Editor, Object Creator
+* TODO 이 월드에 속한 모든 유저를 이터레이션 하고 싶다면?
+* TODO 이 월드에 속한 모든 온라인 유저를 이터레이션 하고 싶다면?
+* TODO 이 월드에 속한 모든 플레이어를 이터레이션 하고 싶다면?
+* TODO 이 월드에 속한 모든 온라인 플레이어를 이터레이션 하고 싶다면?
 
 
 ## 2022-12-1
