@@ -1,4 +1,4 @@
-module dmud_poc::player_state {
+module dmud_poc::inventory {
 
     // The first part of the module is a list of imports. 
     // The second part is a list of types. 
@@ -19,7 +19,7 @@ module dmud_poc::player_state {
     //use dmud_poc::zone;
 
     // Part 2: types
-    struct PlayerState has key, store {
+    struct Inventory has key, store {
         id: UID,
     }
 
@@ -27,7 +27,7 @@ module dmud_poc::player_state {
 
     // ===== Events =====
 
-    struct PlayerStateMinted has copy, drop {
+    struct InventoryMinted has copy, drop {
         // The Object ID of the World
         object_id: ID,
         // The creator of the World
@@ -39,19 +39,21 @@ module dmud_poc::player_state {
     // --- Initialization
 
     // ===== Public Functions =====
-    public fun new(ctx: &mut TxContext) {
+    public fun new(
+        ctx: &mut TxContext
+    ) {
         let sender = tx_context::sender(ctx);
 
-        let playerState = PlayerState {
+        let inventory = Inventory {
             id: object::new(ctx),
         };
 
-        event::emit(PlayerStateMinted {
-            object_id: object::id(&playerState),
+        event::emit(InventoryMinted {
+            object_id: object::id(&inventory),
             creator: sender,
         });
 
-        transfer::transfer(playerState, sender);
+        transfer::transfer(inventory, sender);
     }
 
     // ===== Public View Functions =====

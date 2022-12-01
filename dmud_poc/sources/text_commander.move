@@ -1,4 +1,3 @@
-
 module dmud_poc::text_commander {
     
     // The first part of the module is a list of imports. 
@@ -12,8 +11,9 @@ module dmud_poc::text_commander {
     use std::vector;
 
     use sui::object::{Self, ID, UID};
-    use sui::event;
-    use sui::transfer;
+    //use sui::object::{Self, UID};
+    //use sui::event;
+    //use sui::transfer;
     use sui::tx_context::{Self, TxContext};
 
     // Part 2: types
@@ -43,7 +43,8 @@ module dmud_poc::text_commander {
 
     // ===== Public Functions =====
 
-    public fun new(ctx: &mut TxContext, owner : address , player: address) {
+    public fun new(ctx: &mut TxContext, owner : address , player: address) : TextCommander {
+
         let sender = tx_context::sender(ctx);
 
         let commander = TextCommander {
@@ -54,14 +55,15 @@ module dmud_poc::text_commander {
             commands : vector::empty(),
         };
 
-        event::emit(TextCommanderMinted {
-            object_id: object::id(&commander),
-            creator: sender,
-            owner : owner,
-            player : player,
-        });
+        // event::emit(TextCommanderMinted {
+        //     object_id: object::id(&commander),
+        //     creator: sender,
+        //     owner : owner,
+        //     player : player,    
+        // });
 
-        transfer::transfer(commander, owner);
+        //transfer::transfer(commander, owner);
+        commander
     }
 
     // ===== Public View Functions =====
