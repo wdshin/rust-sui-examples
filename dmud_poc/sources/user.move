@@ -70,10 +70,7 @@ module dmud_poc::user {
 
         transfer::transfer(user, sender);
     }
-    // TODO 이 월드에 속한 모든 유저를 이터레이션 하고 싶다면?
-    // TODO 이 월드에 속한 모든 온라인 유저를 이터레이션 하고 싶다면?
-    // TODO 이 월드에 속한 모든 플레이어를 이터레이션 하고 싶다면?
-    // TODO 이 월드에 속한 모든 온라인 플레이어를 이터레이션 하고 싶다면?
+
 
     // ===== Public View Functions =====
     
