@@ -10,14 +10,13 @@ module dmud_poc::player {
     use std::string;
     use std::option::{Self, Option};
     //use sui::vec_map::{Self,VecMap};
-    use std::vector;
+    //use std::vector;
 
     use sui::object::{Self, ID, UID};
     use sui::event;
     use sui::transfer;
     use sui::tx_context::{Self, TxContext};
     
-    //friend dmud_poc::text_commander;
     use dmud_poc::text_commander::{Self, TextCommander};
     
     // Part 2: types
@@ -53,10 +52,12 @@ module dmud_poc::player {
     ) {
         let sender = tx_context::sender(ctx);
 
-        let new_text_commander = text_commander::new(ctx, sender, sender);
+        let new_player_id = object::new(ctx);
+
+        let new_text_commander = text_commander::new(ctx, sender, object::uid_to_inner(&new_player_id));
 
         let player = Player {
-            id: object::new(ctx),
+            id: new_player_id,
             name: string::utf8(name),
             text_commander: option::some(new_text_commander), 
         };

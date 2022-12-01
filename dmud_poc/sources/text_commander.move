@@ -21,7 +21,7 @@ module dmud_poc::text_commander {
         id: UID,
         creator : address,
         owner : address,
-        player : address,
+        player_id : ID,
         commands : vector<string::String>,
     }
 
@@ -29,13 +29,6 @@ module dmud_poc::text_commander {
 
     // ===== Events =====
 
-    struct TextCommanderMinted has copy, drop {
-        // The Object ID of the World
-        object_id: ID,
-        creator : address,
-        owner : address,
-        player : address,
-    }
 
     // ===== Private Functions =====
 
@@ -43,7 +36,7 @@ module dmud_poc::text_commander {
 
     // ===== Public Functions =====
 
-    public fun new(ctx: &mut TxContext, owner : address , player: address) : TextCommander {
+    public fun new(ctx: &mut TxContext, owner : address , player_id: ID) : TextCommander {
 
         let sender = tx_context::sender(ctx);
 
@@ -51,18 +44,10 @@ module dmud_poc::text_commander {
             id: object::new(ctx),
             creator : sender,
             owner : owner,
-            player : player,
+            player_id : player_id,
             commands : vector::empty(),
         };
 
-        // event::emit(TextCommanderMinted {
-        //     object_id: object::id(&commander),
-        //     creator: sender,
-        //     owner : owner,
-        //     player : player,    
-        // });
-
-        //transfer::transfer(commander, owner);
         commander
     }
 
