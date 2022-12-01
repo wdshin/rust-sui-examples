@@ -1,23 +1,4 @@
 
-// * User
-//   * ! is directly connected to a wallet.
-//   * ! should be created(minted) right after connecting to a Universe.
-//   * ! has informations about the outside.
-//     * has primary PFP
-//       * has other NFTs
-//     * membership NFTs
-//     * real name
-//     * nick name
-//     * email
-//     * blockchain Wallet address
-//     * device ids
-//   * ! can connect to a World.
-//   * ! can create a Player after connecting to a World.
-//   * ! has(owns) several Players(NFTs)
-//     * A Player belongs to one World
-//     * A Player can have several Commanders
-//   * ? can connect to Chatting Rooms(Channels)
-
 module dmud_poc::user {
 
     // The first part of the module is a list of imports. 
@@ -36,13 +17,18 @@ module dmud_poc::user {
     use sui::transfer;
     use sui::tx_context::{Self, TxContext};
 
-    //use dmud_poc::zone;
+    //use sui::vec_map::{Self,VecMap};
+    use std::vector;
+
+    //use dmud_poc::player::{Self, Player};
 
     // Part 2: types
     struct User has key, store {
         id: UID,
         /// Name for the service
         name: string::String,
+        /// Players in the world
+        list_players : vector<ID>,
     }
 
     // Part3 : functions
@@ -69,13 +55,13 @@ module dmud_poc::user {
     ) {
         let sender = tx_context::sender(ctx);
 
-        //let zone0 = new_zone(ctx);
-
         let user = User {
             id: object::new(ctx),
             name: string::utf8(name),
+            list_players: vector::empty(),
         };
 
+        
         event::emit(UserMinted {
             object_id: object::id(&user),
             creator: sender,
@@ -84,6 +70,10 @@ module dmud_poc::user {
 
         transfer::transfer(user, sender);
     }
+    // TODO 이 월드에 속한 모든 유저를 이터레이션 하고 싶다면?
+    // TODO 이 월드에 속한 모든 온라인 유저를 이터레이션 하고 싶다면?
+    // TODO 이 월드에 속한 모든 플레이어를 이터레이션 하고 싶다면?
+    // TODO 이 월드에 속한 모든 온라인 플레이어를 이터레이션 하고 싶다면?
 
     // ===== Public View Functions =====
     

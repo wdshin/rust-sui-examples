@@ -1,6 +1,31 @@
 
 # Design Considerations
 
+## 2022-12-2
+
+* DONE user, player, text_commander
+* TODO character
+* TODO character attributes
+* TODO character race
+* TODO character job warrior
+* TODO monster
+* TODO monster attributes
+* TODO goblin 
+* TODO Zone, Area, Cell
+* TODO Ticker ( World, Zone, Area ) 
+* TODO Player Controller
+* TODO AI Controller
+* TODO Command Queue
+* TODO Process Commands
+* TODO Packet Commander
+* TODO Send back Results
+* TODO Notifier
+* TODO Player Event Queue
+* TODO Social World
+* TODO Object Browser, World Browser, Module Browser
+* TODO Object Injector, Object Editor, Object Creator
+
+
 ## 2022-12-1
 
 * user
@@ -13,4 +38,5 @@
   * AI controller 가 붙어야 함.
     * 데이터만으로 만들 수 있는게 좋다.
   * monster 도 player 인가?
-
+    * No!
+    * Character 이다.
