@@ -1,82 +1,78 @@
-// module dmud_poc::player {
-//     // Part 1: imports
-//     // use sui::object::{Self, UID};
-//     // //use sui::transfer;
-//     // //use sui::tx_context::{Self, TxContext};
+module dmud_poc::player {
 
-//     // // Part 2: command receiver
-//     // struct CommandReceiver has key, store {
-//     //     id: UID,
-//     // }
+    // The first part of the module is a list of imports. 
+    // The second part is a list of types. 
+    // The third part is a list of functions. 
+    // The fourth part is a list of tests.
 
-//     // Part 1: imports
-//     use sui::object::{Self, UID};
-//     use sui::transfer;
-//     use sui::tx_context::{Self, TxContext};
+    // Part 1: imports
+    //use sui::url::{Self, Url};
+    use std::string;
+    use std::option::{Self, Option};
+    //use sui::vec_map::{Self,VecMap};
+    //use std::vector;
 
-//     // https://docs.sui.io/build/programming-with-objects/ch4-object-wrapping
-//     // For a struct type to be capable of being embedded in a Sui object struct 
-//     // (which will have key ability), 
-//     // the embedded struct type must have the store ability.
+    use sui::object::{Self, ID, UID};
+    use sui::event;
+    use sui::transfer;
+    use sui::tx_context::{Self, TxContext};
+    
+    use dmud_poc::text_commander::{Self, TextCommander};
+    
+    // Part 2: types
+    struct Player has key, store {
+        id: UID,
+        /// Name for the service
+        name: string::String,
+        //
+        text_commander : Option<TextCommander>,
+    }
 
-//     // Part 2: struct definitions
-//     struct Player has key, store {
-//         id: UID,
-//         magic: u64,
-//         strength: u64,
-//     }
+    // Part3 : functions
 
-//     struct PlayerDB has key, store {
-//         id: UID,
-//         players_created: u64,
-//     }
+    // ===== Events =====
 
-//     // Part 3: module initializer to be executed when this module is published
-//     fun init(ctx: &mut TxContext) {
-//         let admin = PlayerDB {
-//             id: object::new(ctx),
-//             players_created: 0,
-//         };
-//         // transfer the forge object to the module/package publisher
-//         transfer::transfer(admin, tx_context::sender(ctx));
-//     }
+    struct PlayerMinted has copy, drop {
+        // The Object ID of the World
+        object_id: ID,
+        // The creator of the World
+        creator: address,
+        // The name of the World
+        name: string::String,
+    }
 
-//     // Part 4: accessors required to read the struct attributes
-//     public fun magic(self: &Player): u64 {
-//         self.magic
-//     }
+    // ===== Private Functions =====
 
-//     public fun strength(self: &Player): u64 {
-//         self.strength
-//     }
+    // --- Initialization
 
-//     public fun players_created(self: &PlayerDB): u64 {
-//         self.players_created
-//     }
+    // ===== Public Functions =====
+    public entry fun new(
+        name: vector<u8>,
+        ctx: &mut TxContext
+    ) {
+        let sender = tx_context::sender(ctx);
 
-//     // part 5: public/ entry functions (introduced later in the tutorial)
-//     // part 6: private functions (if any)
+        let new_player_id = object::new(ctx);
 
-//     #[test]
-//     public fun test_player_create() {
-//         use sui::tx_context;
-//         use sui::transfer;
+        let new_text_commander = text_commander::new(ctx, sender, object::uid_to_inner(&new_player_id));
 
-//         // create a dummy TxContext for testing
-//         let ctx = tx_context::dummy();
+        let player = Player {
+            id: new_player_id,
+            name: string::utf8(name),
+            text_commander: option::some(new_text_commander), 
+        };
 
-//         // create a player
-//         let player = Player {
-//             id: object::new(&mut ctx),
-//             magic: 42,
-//             strength: 7,
-//         };
+        event::emit(PlayerMinted {
+            object_id: object::id(&player),
+            creator: sender,
+            name: player.name,
+        });
 
-//         // check if accessor functions return correct values
-//         assert!(magic(&player) == 42 && strength(&player) == 7, 1);
+        transfer::transfer(player, sender);
+    }
 
-//         // create a dummy address and transfer the player
-//         let dummy_address = @0xCAFE;
-//         transfer::transfer(player, dummy_address);
-//     }
-// }
+    // ===== Public View Functions =====
+    
+    // Part 4: tests    
+
+}

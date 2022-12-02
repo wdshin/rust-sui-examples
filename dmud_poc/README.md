@@ -1,6 +1,29 @@
 
 # dmud - 'Proof of Concepts'
 
+* What is the problem that you’re solving?
+  * We want to help gamers to easily make interactive online games 100% on-chain. 
+  * This is difficult because there is no easy way to 1) stream live information on-chain and 2) incentivize individual game creators . 
+  * Streaming of information is extremely difficult using current blockchain networks and this limits the interactive nature of online games. 
+  * This is one of the main reasons we have not seen MMOGs built 100% on-chain. The polling model can be adopted to a certain extent but this is not suitable or sustainable for a real time interactive game environment with mass players.
+  * Also, there is no easy way to effectively incentivize micro studios and individual game creators for their creativity using a conventional web3 value share model. 
+  * The conventional model is designed to incentivize players for their play but no real progress has been made in exploiting the creative inertia of gamers and amateur creators.
+
+* Expand on the product that you're building
+  * dMud V1 is a text based on-chain open world MMORPG. 
+  * The users can use dMud to create their own text based MMORPG games or simply participate as players to play the games created by other users. 
+  * The creators, also known as the wizards / immortals, are the architects of a game world. They have the power to design a whole game environment and rules using dMud Creator Studio, which is a text based interface for creators to create games using a natural language. 
+  * The players are known as mortals, they can interact with other players to build guilds to complete quests and also fight other players to loot their game items (NFTs / FTs). 
+  * At the guild, the players share their knowledge and game experience. The guild masters can make suggestions to wizards / immortals to improve the gameplay experience. 
+  * The user generated games will be curated and rewarded according to active users, transactions and likes from players.
+  * Technically, the dMud consists of two parts. 
+    * The dMud VM which is a mainnet that will run the dMud games created by both dMud core team and users. The dMud Creator Studio is a place where users have tools and libraries to access all information required in building their own game. 
+    * dMud V2 plans to leverage generative AI to add more visuals to games created on dMud.
+
+
+
+# dmud 1st goal
+
 1. interact with sui move contracts
 2. minting some general objects
 3. listening events 
@@ -275,16 +298,16 @@ sui client object --id $OBJECT --json
 
 * commander on chain
   * text commander on chain
-    * client 가 text commander 에게 검증되지 않은 명령어를 보낸다.
-    * 이것을 context 에  맞게 해석하여 commander entity 로 보내고, commander entity 가 player 를 control 하도록 한다.
+    * The client sends an unverified command to the text commander.
+    * This is interpreted according to the context and sent to the commander entity, and the commander entity controls the player.
   * packet commander
   
 
 * player controller
-  * commander 에게 명령을 받는 entity
-  * player 에게 명령을 내리는 entity
-  * player 는 어떤 공간에 속해 있을 수 있다.
-    * 어떤 공간에 속해 있지 않다면 void 에 속해 있다.
+  * entity that receives orders from the commander
+  * An entity that issues commands to the player
+  * A player can belong to any space.
+    * If it does not belong to a space, it belongs to void.
 
 ### game entities
 
@@ -312,15 +335,17 @@ sui client object --id $OBJECT --json
 
 * events for player
 
+## study on move
 
+* https://move-book.com/
 ## study on sui-framework's builtin data structures
 
 * [object](https://github.com/MystenLabs/sui/blob/main/crates/sui-framework/docs/object.md)
   * ID
   * UID
 * [priority_queue](https://github.com/MystenLabs/sui/blob/main/crates/sui-framework/docs/priority_queue.md)
-  * commander 를 통해 받은 명령어들을 쌓아놓는데 쓰면 될 것 같다.
-  * 얼마나 많이 저장할 수 있는지 궁금하다.
+  * It seems to be used to accumulate commands received through comander.
+  * I wonder how much you can store.
 
 * [bag](https://github.com/MystenLabs/sui/blob/main/crates/sui-framework/docs/bag.md)
 * [table](https://github.com/MystenLabs/sui/blob/main/crates/sui-framework/docs/table.md)
@@ -330,11 +355,11 @@ sui client object --id $OBJECT --json
 * [object_table](https://github.com/MystenLabs/sui/blob/main/crates/sui-framework/docs/object_table.md)
 
 * [vec_map](https://github.com/MystenLabs/sui/blob/main/crates/sui-framework/docs/vec_map.md)
-  * function interface 만 map 이고 모두 O(N)으로 작동함.
-  * insertion order 대로 iteration 됨.
+  * Only the function interface is map , and all of them work in O(N).
+  * Iterates according to the insertion order.
 * [vec_set](https://github.com/MystenLabs/sui/blob/main/crates/sui-framework/docs/vec_set.md)
-  * function interface 만 map 이고 모두 O(N)으로 작동함.
-  * duplicate key 불허하는지에 대해서 보장 안 함 ㅋㅋ 
+  * Only the function interface is map , and all of them work in O(N).
+  * We do not guarantee that duplicate keys are not allowed.
 
 
 * [dynamic_field](https://github.com/MystenLabs/sui/blob/main/crates/sui-framework/docs/dynamic_field.md)
