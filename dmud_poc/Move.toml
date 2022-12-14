@@ -3,7 +3,8 @@ name = "dmud_poc"
 version = "0.0.1"
 
 [dependencies]
-Sui = { git = "https://github.com/MystenLabs/sui.git", subdir = "crates/sui-framework", rev = "devnet" }
+#Sui = { git = "https://github.com/MystenLabs/sui.git", subdir = "crates/sui-framework", rev = "devnet" }
+Sui = { git = "https://github.com/wdshin/sui.git", subdir = "crates/sui-framework", rev = "devnet" }
 
 [addresses]
 dmud_poc =  "0x0"

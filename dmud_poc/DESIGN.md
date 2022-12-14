@@ -28,7 +28,8 @@
 * TODO What if you want to iterate over all online users in this world?
 * TODO What if you want to iterate over all players in this world?
 * TODO What if you want to iterate over all online players in this world?
-
+* TODO Entity Component System
+* TODO connect to local genesis node
 
 ## 2022-12-1
 
