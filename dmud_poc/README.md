@@ -1,6 +1,5 @@
 
-# dmud - 'Proof of Concepts'
-
+# dmud 
 
 # dmud 1st goal
 
@@ -14,6 +13,24 @@
 8. very simple social world
 9. entity component system in sui move
 
-## system design
+# Documents and Journals
 
-### goal
+* [Core Questions](docs/CoreQuestions.md)
+* [Sui](docs/sui.md)
+* [Sui Data Structures](docs/SuiDS.md)
+* [CRC](docs/CRC.md)
+* [Terminology](docs/Terminology.md)
+* [References](docs/References.md)
+
+# TODO
+
+* [TODO](TODO.md)
+
+# Design
+
+* [Design](DESIGN.md)
+
+# Test
+
+* [Test](TOTEST.md)
+
